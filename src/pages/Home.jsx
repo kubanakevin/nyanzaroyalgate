@@ -1,9 +1,8 @@
 // pages/HomePage.jsx
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import LoadingScreen from "../components/Loading";
 import {
     FaPhone, FaWhatsapp, FaEnvelope, FaStar, FaArrowRight,
     FaMapMarkerAlt, FaWifi, FaParking, FaShieldAlt, FaClock
@@ -11,6 +10,7 @@ import {
 import { GiHotMeal, GiCandleLight, GiWineGlass } from "react-icons/gi";
 import { MdSpa, MdEvent, MdMeetingRoom, MdPool } from "react-icons/md";
 import { RiHomeHeartLine } from "react-icons/ri";
+
 
 /* ─── Scroll-reveal hook ─── */
 function useReveal() {
@@ -94,24 +94,11 @@ const TESTIMONIALS = [
 /* ═══════════════════════════════════════════════ */
 
 function HomePage() {
-    const [loading, setLoading] = useState(true);
     useReveal();
-
-    useEffect(() => {
-        // Simulate loading time (remove this in production or replace with actual data fetching)
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 1500);
-        
-        return () => clearTimeout(timer);
-    }, []);
-
-    if (loading) {
-        return <LoadingScreen />;
-    }
 
     return (
         <>
+        
             <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap');
 
