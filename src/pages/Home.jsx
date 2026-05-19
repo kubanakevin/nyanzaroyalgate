@@ -1,8 +1,9 @@
 // pages/HomePage.jsx
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import LoadingScreen from "../components/Loading";
 import {
     FaPhone, FaWhatsapp, FaEnvelope, FaStar, FaArrowRight,
     FaMapMarkerAlt, FaWifi, FaParking, FaShieldAlt, FaClock
@@ -93,7 +94,21 @@ const TESTIMONIALS = [
 /* ═══════════════════════════════════════════════ */
 
 function HomePage() {
+    const [loading, setLoading] = useState(true);
     useReveal();
+
+    useEffect(() => {
+        // Simulate loading time (remove this in production or replace with actual data fetching)
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 1500);
+        
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (loading) {
+        return <LoadingScreen />;
+    }
 
     return (
         <>
